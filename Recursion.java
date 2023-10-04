@@ -14,9 +14,7 @@ public class Recursion {
 		}
 		System.out.println(arr[i]);
 		PrintArray(arr, i+1);
-	}
-	
-	
+	}	
 	public static int FirstIndex(int[] arr , int x , int i) {
 		if(i == arr.length) {
 			return -1;
@@ -38,11 +36,11 @@ public class Recursion {
 	}
 
 	public static void main(String[] args) {
-  	PrintIncreasing(7);
+  		PrintIncreasing(7);
 		int[] arr = {2,3,6,9,3,2,6,2,4};
 		PrintArray(arr, 0);
 		int x =2;
 		System.out.println( FirstIndex(arr, x, 0));
 		System.out.println(Factorial(5));
-}
+	}
 }
