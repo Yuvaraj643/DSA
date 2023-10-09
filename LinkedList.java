@@ -1,5 +1,7 @@
 package DSA;
 
+import org.w3c.dom.NamedNodeMap;
+
 public class LinkedList {
 	public static class Node{
 		int data;
@@ -9,7 +11,6 @@ public class LinkedList {
 			this.data = val;
 		}
 	}
-  
 	public static Node addLast(Node head, int val) {
 		Node n =  new Node(val);
 		Node tailNode = head;
@@ -18,12 +19,14 @@ public class LinkedList {
 		}
 		tailNode.next = n;
 		return head;
+		
 	}
 	
 	public static Node addFirst(Node head, int val) {
 		Node n =  new Node(val);
 		n.next = head;
 		head =n;
+		
 		return head;	
 	}
 	
@@ -40,6 +43,7 @@ public class LinkedList {
 		for(int i=1;i<index && tempNode!=null;i++) {
 			tempNode = tempNode.next;
 		}
+		
 		if (tempNode == null) {
 	        System.out.println("Invalid index");
 	    }
@@ -48,7 +52,55 @@ public class LinkedList {
 		node.next = tempNode2;
 		return head;
 	}
+	
+	public static Node RemoveFirst(Node head) {
+		if(head == null) {
+			return null;
+		}
+		head = head.next;
+		return head;
+	}
+	
+	public static Node RemoveLast(Node head) {
+		if(head == null) {
+			return null;
+		}
+		if(head.next==null) {
+			return null;
+		}
+		Node tempNode = head;
+		while(tempNode.next.next!=null) {
+			tempNode = tempNode.next;
+		}
+		tempNode.next = null;
+		
+		return head;
+	}
+	
+	public static Node RemoveAt(Node head,int index) {
+		Node tempNode = head;
+		for(int i=1;i<index && tempNode!=null;i++) {
+			tempNode= tempNode.next;
+		}
+		Node tempNode1 = tempNode.next.next;
+		tempNode.next = tempNode1;
+		
+		return head;
+	}
+	
+	public static int Length(Node head) {
+		int count =0;
+		Node tempNode = head;
+		
+		while (tempNode != null) {
+		    count++;
+		    tempNode = tempNode.next; 
+		}
 
+		return count;
+		
+	}
+	
 	public static void main(String[] args) {
 	    Node n1 = new Node(10);
 	    Node n2 = new Node(20);
@@ -65,9 +117,16 @@ public class LinkedList {
 	    head = addFirst(head, 5);
 	    head = addLast(head, 60);
 	    head = Addat(head,35,3);
+	    head = RemoveFirst(head);
+	    head = RemoveLast(head);
+	    head = RemoveAt(head, 2);
+	    int length = Length(head);
+	    System.out.println("Length of the linked list: " + length);
 	    while (temp != null) {
 	        System.out.println(temp.data + " ");
 	        temp = temp.next;
 	    }
+	    
 	}
+
 }
